@@ -1,3 +1,6 @@
+//Create Date 05-02-2022
+//64130010049 ปริญญา เติมกสิพาณิชย์
+
 import Foundation
 
 let config_package_name:[Int:String] = [
@@ -50,7 +53,7 @@ var sms_price:Float = 0.0
 var subtotal:Float = 0.0
 var vat:Float = 0.0
 var total:Float = 0.0
-
+//input
 for index in 1...config_package_name.count {
   display_package += "\(config_package_name[index]!) Enter \(index) \n"
 }
@@ -79,14 +82,14 @@ if(call["minute"]! > config_package_callLimit[package]! && !config_package_unlim
   call["inpackage"] = call["minute"]!
   call["extra"] = 0
 }
-
+//calculate price
 call_extra_price = Float(call["extra"]!) * 1.5
 sms_price = Float(sms) * 3
-
+//calculate payment detail
 subtotal = config_package_price[package]! + call_extra_price + sms_price
 vat = subtotal * 0.07
 total = subtotal + vat
-
+//output
 print("""
 ------------Mobile Package------------
 [Package Detail]
