@@ -36,18 +36,6 @@ let config_package_callLimit:[Int:Int] = [
   9:0,
   10:0
 ]
-let config_package_callExtra:[Int:Float] = [
-  1:1.5,
-  2:1.5,
-  3:1.5,
-  4:1.5,
-  5:1.5,
-  6:1.5,
-  7:1.5,
-  8:1.5,
-  9:0,
-  10:1.5
-]
 let config_package_unlimited:[Int] = [9]
 
 var display_package:String = ""
@@ -92,7 +80,7 @@ if(call["minute"]! > config_package_callLimit[package]! && !config_package_unlim
   call["extra"] = 0
 }
 
-call_extra_price = Float(call["extra"]!) * config_package_callExtra[package]!
+call_extra_price = Float(call["extra"]!) * 1.5
 sms_price = Float(sms) * 3
 
 subtotal = config_package_price[package]! + call_extra_price + sms_price
@@ -107,7 +95,7 @@ Price : \(config_package_price[package]!) Baht/Month
 
 [Usage Detail]
 Package Call : \(call["inpackage"]!) Minutes | 0 Baht
-Extra Call (\(config_package_callExtra[package]!) Baht/Minutes) : \(call["extra"]!) minutes | \(call_extra_price) Baht
+Extra Call (1.5 Baht/Minutes) : \(call["extra"]!) minutes | \(call_extra_price) Baht
 SMS : \(sms) Message | \(sms_price) Baht
 
 [Payment Detail]
